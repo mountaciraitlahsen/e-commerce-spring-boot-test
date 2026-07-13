@@ -6,6 +6,7 @@ import Header from "./component/header";
 import SideBar from "./component/sideBar";
 import ThirdHeader from "./component/thirdHeader";
 import ProductsCard from "./component/productsCard";
+import FavoriteModal from "./component/favoriteModal";
 import { products } from "./products";
 function App() {
   const [search, setSearch] = useState("");
@@ -13,6 +14,8 @@ function App() {
   const [Products, setProducts] = useState(products);
   const [FavoriteIds, setFavId] = useState([]);
   const [CartIds, setCartId] = useState([]);
+  const [favoriteModal, setFavoriteModal] = useState(false);
+  const [cartModal, setCartModal] = useState(false);
   const counterFavorite = FavoriteIds.length;
   const counterCart = CartIds.reduce((total, p) => total + p.quantity, 0);
   return (
@@ -26,7 +29,17 @@ function App() {
           setSearch={setSearch}
           counterFavorite={counterFavorite}
           counterCart={counterCart}
+          setFavoriteModal={setFavoriteModal}
         />
+        {favoriteModal && (
+          <FavoriteModal
+            counterFavorite={counterFavorite}
+            setFavoriteModal={setFavoriteModal}
+            FavoriteIds={FavoriteIds}
+            setFavId={setFavId}
+            Products={Products}
+          ></FavoriteModal>
+        )}
       </header>
       <main
         className="grid bg-[#FBFBFC] grid-cols-[20%_80%] flex-1 overflow-hidden"

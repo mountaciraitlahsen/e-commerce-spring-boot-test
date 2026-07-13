@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
-import { products } from "../products";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import heartIcon from "../assets/heart.svg";
-
-export default function Favorite({ counterFavorite }) {
+export default function Favorite({ counterFavorite, setFavoriteModal }) {
   return (
     <>
       <button
         className="favorite cursor-pointer text-base"
-        // onClick={}
+        onClick={() => setFavoriteModal(true)}
       >
         <img
           src={heartIcon}

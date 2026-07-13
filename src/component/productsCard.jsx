@@ -1,6 +1,3 @@
-// import SearchBar from "./searchBar";
-// import Favorite from "./favorite";
-// import Cart from "./cart";
 import { useMemo } from "react";
 export default function ProductsCard({
   search,
@@ -35,24 +32,9 @@ export default function ProductsCard({
     }
   }
   const products = useMemo(() => {
-    // const seenNames = new Set();
     if (Category === "All Categories") {
-      // const uniqueProducts = Products.filter((p) => {
-      // if (seenNames.has(p.name)) return false;
-      // seenNames.add(p.name);
-      // return true;
-      // });
-      // return uniqueProducts;
       return Products;
     }
-    // const uniqueProducts = Products.filter(
-    // (e) => e.category === Category,
-    // ).filter((p) => {
-    // if (seenNames.has(p.name)) return false;
-    // seenNames.add(p.name);
-    // return true;
-    // });
-    // return uniqueProducts;
     return Products.filter((e) => e.category === Category);
   }, [Category, Products]);
   return (
@@ -126,12 +108,12 @@ export default function ProductsCard({
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
-              Add to Cart   
+              Add to Cart
               {CartIds.find((item) => item.id === p.id)?.quantity > 0 && (
-              <span className="">
-                ({CartIds.find((item) => item.id === p.id)?.quantity})
-              </span>
-            )}
+                <span className="">
+                  ({CartIds.find((item) => item.id === p.id)?.quantity})
+                </span>
+              )}
             </button>
           </div>
         </div>

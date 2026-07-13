@@ -7,6 +7,7 @@ export default function Header({
   setSearch,
   counterFavorite,
   counterCart,
+  setFavoriteModal,
 }) {
   return (
     <>
@@ -16,7 +17,10 @@ export default function Header({
       </h3>
       <SearchBar search={search} setSearch={setSearch} />
       <div className="flex gap-8 font-semibold">
-        <Favorite counterFavorite={counterFavorite} />
+        <Favorite
+          counterFavorite={counterFavorite}
+          setFavoriteModal={setFavoriteModal}
+        />
         <Cart counterCart={counterCart} />
       </div>
     </>
