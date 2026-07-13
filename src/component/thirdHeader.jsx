@@ -1,11 +1,11 @@
 import CategoryCounter from "./categoryCounter";
 import CategorySorting from "./categorySorting";
-export default function ThirdHeader({Category, Products}) {
+export default function ThirdHeader({Category, Products, search, setSorting}) {
   return (
     // <div className="bg-white rounded-xl shadow-sm border border-[#e3e3e3] p-4 flex items-center justify-between gap-4 m-4">
     <>
-      <CategoryCounter Category={Category} Products={Products} />
-      <CategorySorting />
+      <CategoryCounter Category={Category} Products={Products} search={search} />
+      <CategorySorting setSorting={setSorting} />
     </>
     // </div>
   );

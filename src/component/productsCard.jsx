@@ -8,6 +8,7 @@ export default function ProductsCard({
   setFavId,
   CartIds,
   setCartId,
+  sorting,
 }) {
   function handleClickFav(id) {
     setFavId(
@@ -33,10 +34,30 @@ export default function ProductsCard({
   }
   const products = useMemo(() => {
     if (Category === "All Categories") {
-      return Products.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
+      if (sorting === "Newest") {
+        return Products.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()),
+        );
+      } else if (sorting === "Oldest") {
+        return Products.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase()),
+        ).toReversed();
+      }
     }
-    return Products.filter((e) => e.category === Category && e.name.toLowerCase().includes(search.toLowerCase()));
-  }, [Category, Products, search]);
+    if (sorting === "Newest") {
+      return Products.filter(
+        (e) =>
+          e.category === Category &&
+          e.name.toLowerCase().includes(search.toLowerCase()),
+      );
+    } else if (sorting === "Oldest") {
+      return Products.filter(
+        (e) =>
+          e.category === Category &&
+          e.name.toLowerCase().includes(search.toLowerCase()),
+      ).toReversed();
+    }
+  }, [Category, Products, search, sorting]);
   return (
     <>
       {products.map((p) => (

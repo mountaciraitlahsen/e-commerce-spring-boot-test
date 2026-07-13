@@ -17,6 +17,7 @@ function App() {
   const [CartIds, setCartId] = useState([]);
   const [favoriteModal, setFavoriteModal] = useState(false);
   const [cartModal, setCartModal] = useState(false);
+  const [sorting, setSorting] = useState('Newest');
   const counterFavorite = FavoriteIds.length;
   const counterCart = CartIds.reduce((total, p) => total + p.quantity, 0);
   return (
@@ -61,7 +62,7 @@ function App() {
             className="rounded-xl border shadow-[0_2px_4px_0px_rgba(0,0,0,0.05)] border-[#e3e3e3] w-[85%] ml-8 h-[80%] bg-white"
             id="sidebar__container"
           >
-            <SideBar setCategory={setCategory} />
+            <SideBar setCategory={setCategory} setSorting={setSorting} />
           </div>
         </div>
         <div className="flex flex-col h-[86%] w-[90%] self-start mx-auto mt-2 pt-2 ml-12">
@@ -69,7 +70,7 @@ function App() {
             id="main__header"
             className="w-full items-center flex justify-between"
           >
-            <ThirdHeader Category={Category} Products={Products} />
+            <ThirdHeader Category={Category} Products={Products} search={search} setSorting={setSorting} />
           </div>
           <div
             className="grid grid-cols-4 h-[83%] overflow-x-hidden  -ml-7 px-4"
@@ -84,6 +85,7 @@ function App() {
               setFavId={setFavId}
               CartIds={CartIds}
               setCartId={setCartId}
+              sorting={sorting}
             />
           </div>
         </div>
