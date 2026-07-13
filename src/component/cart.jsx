@@ -3,10 +3,10 @@ import { products } from "../products";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import cartIcon from "../assets/shopping-cart.svg";
-export default function Cart({ counterCart }) {
+export default function Cart({ counterCart, setCartModal }) {
   return (
     <>
-      <button className="cart cursor-pointer text-base">
+      <button className="cart cursor-pointer text-base" onClick={() => setCartModal(true)}>
         <img
           src={cartIcon}
           alt=""

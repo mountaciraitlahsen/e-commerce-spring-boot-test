@@ -8,6 +8,7 @@ export default function Header({
   counterFavorite,
   counterCart,
   setFavoriteModal,
+  setCartModal,
 }) {
   return (
     <>
@@ -21,7 +22,8 @@ export default function Header({
           counterFavorite={counterFavorite}
           setFavoriteModal={setFavoriteModal}
         />
-        <Cart counterCart={counterCart} />
+        <Cart counterCart={counterCart} 
+        setCartModal={setCartModal}/>
       </div>
     </>
   );

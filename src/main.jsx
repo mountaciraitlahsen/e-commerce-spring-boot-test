@@ -7,6 +7,7 @@ import SideBar from "./component/sideBar";
 import ThirdHeader from "./component/thirdHeader";
 import ProductsCard from "./component/productsCard";
 import FavoriteModal from "./component/favoriteModal";
+import CartModal from "./component/cartModal";
 import { products } from "./products";
 function App() {
   const [search, setSearch] = useState("");
@@ -30,6 +31,7 @@ function App() {
           counterFavorite={counterFavorite}
           counterCart={counterCart}
           setFavoriteModal={setFavoriteModal}
+          setCartModal={setCartModal}
         />
         {favoriteModal && (
           <FavoriteModal
@@ -39,6 +41,15 @@ function App() {
             setFavId={setFavId}
             Products={Products}
           ></FavoriteModal>
+        )}
+        {cartModal && (
+          <CartModal
+            counterCart={counterCart}
+            setCartModal={setCartModal}
+            CartIds={CartIds}
+            setCartId={setCartId}
+            Products={Products}
+          ></CartModal>
         )}
       </header>
       <main

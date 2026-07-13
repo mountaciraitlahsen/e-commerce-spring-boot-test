@@ -1,4 +1,3 @@
-import heartIcon from "../assets/heart.svg";
 export default function FavoriteModal({
   counterFavorite,
   setFavoriteModal,
@@ -27,7 +26,7 @@ export default function FavoriteModal({
           </div>
 
           <div className="flex justify-between items-center mb-4 text-sm ">
-            <span className="text-gray-600">{FavoriteIds.length} items</span>
+            <span className="text-gray-600">{counterFavorite} items</span>
             <button
               className="text-red-500 font-medium hover:underline cursor-pointer"
               onClick={() => setFavId([])}

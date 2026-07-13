@@ -33,10 +33,10 @@ export default function ProductsCard({
   }
   const products = useMemo(() => {
     if (Category === "All Categories") {
-      return Products;
+      return Products.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
     }
-    return Products.filter((e) => e.category === Category);
-  }, [Category, Products]);
+    return Products.filter((e) => e.category === Category && e.name.toLowerCase().includes(search.toLowerCase()));
+  }, [Category, Products, search]);
   return (
     <>
       {products.map((p) => (
