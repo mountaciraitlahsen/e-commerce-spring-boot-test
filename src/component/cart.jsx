@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
-import { products } from "../products";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { Link } from "react-router-dom";
 import cartIcon from "../assets/shopping-cart.svg";
 export default function Cart({ counterCart, setCartModal }) {
   return (
     <>
-      <button className="cart cursor-pointer text-base" onClick={() => setCartModal(true)}>
+      <Link to="/cart" className="cart cursor-pointer text-base">
         <img
           src={cartIcon}
           alt=""
@@ -15,7 +12,7 @@ export default function Cart({ counterCart, setCartModal }) {
         <span className="pl-1">
           cart (<span>{counterCart}</span>)
         </span>
-      </button>
+      </Link>
     </>
   );
 }

@@ -1,15 +1,18 @@
+import { useNavigate } from "react-router-dom";
 export default function FavoriteModal({
   counterFavorite,
-  setFavoriteModal,
   FavoriteIds,
   setFavId,
   Products,
 }) {
+  const navigate = useNavigate();
   return (
     <>
       <div
         className="fixed inset-0 flex items-center justify-end bg-black/30 z-50"
-        onClick={() => setFavoriteModal(false)}
+        onClick={() => {
+          navigate("/");
+        }}
       >
         <div
           className="bg-[#FEFEFE] w-[33.5rem] h-[43rem] mt-4 mr-6 rounded-2xl shadow-xl p-6 "
@@ -19,7 +22,9 @@ export default function FavoriteModal({
             <h2 className="text-xl font-bold">Your Favorites</h2>
             <button
               className="text-gray-400 hover:text-black cursor-pointer"
-              onClick={() => setFavoriteModal(false)}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               ✕
             </button>
@@ -61,7 +66,7 @@ export default function FavoriteModal({
                     <button
                       className="self-start mt-1 cursor-pointer"
                       onClick={() =>
-                        setFavId(FavoriteIds.filter((id) => (id !== p.id)))
+                        setFavId(FavoriteIds.filter((id) => id !== p.id))
                       }
                     >
                       <svg

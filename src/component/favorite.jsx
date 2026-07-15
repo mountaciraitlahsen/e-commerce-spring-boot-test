@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom";
 import heartIcon from "../assets/heart.svg";
-export default function Favorite({ counterFavorite, setFavoriteModal }) {
+export default function Favorite({ counterFavorite }) {
   return (
     <>
-      <button
+      <Link to="/favorites"
         className="favorite cursor-pointer text-base"
-        onClick={() => setFavoriteModal(true)}
       >
         <img
           src={heartIcon}
@@ -14,7 +14,7 @@ export default function Favorite({ counterFavorite, setFavoriteModal }) {
         <span className="pl-1">
           Favorites (<span>{counterFavorite}</span>)
         </span>
-      </button>
+      </Link>
     </>
   );
 }

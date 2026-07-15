@@ -1,10 +1,11 @@
+import { useNavigate } from "react-router-dom";
 export default function CartModal({
   counterCart,
-  setCartModal,
   CartIds,
   setCartId,
   Products,
 }) {
+  const navigate = useNavigate();
   function increaseQuantity(id) {
     const item = CartIds.find((current) => current.id === id);
     const product = Products.find((current) => current.id === id);
@@ -40,7 +41,9 @@ export default function CartModal({
     <>
       <div
         className="fixed inset-0 flex items-center justify-end bg-black/30 z-50"
-        onClick={() => setCartModal(false)}
+        onClick={() => {
+          navigate("/");
+        }}
       >
         <div
           className="bg-[#FEFEFE] w-[33.5rem] h-[43rem] mt-4 mr-6 rounded-2xl shadow-xl p-6 "
@@ -50,7 +53,9 @@ export default function CartModal({
             <h2 className="text-xl font-bold">Your Cart</h2>
             <button
               className="text-gray-400 hover:text-black cursor-pointer"
-              onClick={() => setCartModal(false)}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               ✕
             </button>

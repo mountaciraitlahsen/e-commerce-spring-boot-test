@@ -1,4 +1,3 @@
-// import { React } from "react";
 import SearchBar from "./searchBar";
 import Favorite from "./favorite";
 import Cart from "./cart";
@@ -7,8 +6,6 @@ export default function Header({
   setSearch,
   counterFavorite,
   counterCart,
-  setFavoriteModal,
-  setCartModal,
 }) {
   return (
     <>
@@ -18,12 +15,8 @@ export default function Header({
       </h3>
       <SearchBar search={search} setSearch={setSearch} />
       <div className="flex gap-8 font-semibold">
-        <Favorite
-          counterFavorite={counterFavorite}
-          setFavoriteModal={setFavoriteModal}
-        />
-        <Cart counterCart={counterCart} 
-        setCartModal={setCartModal}/>
+        <Favorite counterFavorite={counterFavorite} />
+        <Cart counterCart={counterCart} />
       </div>
     </>
   );
