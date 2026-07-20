@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import heartIcon from "../assets/heart.svg";
+import { useLocation } from "react-router-dom";
 export default function Favorite({ counterFavorite }) {
+  const location = useLocation();
   return (
     <>
-      <Link to="/favorites"
+      <Link
+        to="/favorites"
+        state={{ backgroundLocation: location }}
         className="favorite cursor-pointer text-base"
       >
         <img

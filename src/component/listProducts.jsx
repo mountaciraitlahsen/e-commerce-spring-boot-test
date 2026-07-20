@@ -1,9 +1,12 @@
+import CategoryCounter from "./categoryCounter";
+import CategorySorting from "./categorySorting";
 import { useMemo } from "react";
-export default function ProductsCard({
-  search,
-  setProducts,
+export default function ListProducts({
   Category,
   Products,
+  search,
+  setSorting,
+  setProducts,
   FavoriteIds,
   setFavId,
   CartIds,
@@ -59,7 +62,19 @@ export default function ProductsCard({
     }
   }, [Category, Products, search, sorting]);
   return (
+    // <div className="bg-white rounded-xl shadow-sm border border-[#e3e3e3] p-4 flex items-center justify-between gap-4 m-4">
     <>
+      <div
+        id="main__header"
+        className="w-full items-center flex justify-between"
+      >
+        <CategoryCounter
+          Category={Category}
+          Products={Products}
+          search={search}
+        />
+        <CategorySorting setSorting={setSorting} />
+      </div>
       <div
         className="grid grid-cols-4 h-[83%] overflow-x-hidden  -ml-7 px-4"
         id="body"
@@ -145,5 +160,6 @@ export default function ProductsCard({
         ))}
       </div>
     </>
+    // </div>
   );
 }
