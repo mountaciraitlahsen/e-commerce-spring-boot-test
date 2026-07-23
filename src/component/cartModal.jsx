@@ -8,7 +8,7 @@ export default function CartModal({
 }) {
   const location = useLocation();
   const isModal = Boolean(location.state?.backgroundLocation);
-  const closeModal = () => navigate(-1);
+  // const closeModal = () => navigate(-1);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isModal) {
@@ -54,7 +54,7 @@ export default function CartModal({
         <div
           className="fixed inset-0 flex items-center justify-end bg-black/30 z-50"
           onClick={() => {
-            navigate("/");
+            navigate(`${location.state?.backgroundLocation.pathname}`);
           }}
         >
           <div
@@ -66,7 +66,7 @@ export default function CartModal({
               <button
                 className="text-gray-400 hover:text-black cursor-pointer"
                 onClick={() => {
-                  navigate("/");
+                  navigate(`${location.state?.backgroundLocation.pathname}`);
                 }}
               >
                 ✕

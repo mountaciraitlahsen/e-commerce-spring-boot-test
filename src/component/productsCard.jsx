@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
 export default function ProductsCard({
   search,
   setProducts,
@@ -65,8 +66,8 @@ export default function ProductsCard({
         id="body"
       >
         {products.map((p) => (
-          <div
-            data-id={p.id}
+          <Link to={`/products/${p.id}`}
+            key={p.id}
             className="relative w-64 h-95 border border-[#e3e3e3] bg-white rounded-xl p-4 flex flex-col gap-2"
           >
             <img
@@ -141,7 +142,7 @@ export default function ProductsCard({
                 )}
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

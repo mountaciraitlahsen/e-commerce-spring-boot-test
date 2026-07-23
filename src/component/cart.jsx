@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import cartIcon from "../assets/shopping-cart.svg";
-import { useLocation } from "react-router-dom";
 export default function Cart({ counterCart, setCartModal }) {
   const location = useLocation();
   return (

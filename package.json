@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "twd": "npx @tailwindcss/cli -i src/styles.css -o src/output.css --watch"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.7",

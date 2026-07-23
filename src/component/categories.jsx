@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 export default function Categories({setCategory}) {
-  // useEffect()
   function handleClick(category) {
     const buttons = document.querySelectorAll(".cat__btn");
     setCategory(category)

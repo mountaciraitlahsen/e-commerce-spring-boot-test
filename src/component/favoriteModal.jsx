@@ -24,7 +24,7 @@ export default function FavoriteModal({
         <div
           className="fixed inset-0 flex items-center justify-end bg-black/30 z-50"
           onClick={() => {
-            navigate("/");
+            navigate(`${location.state?.backgroundLocation.pathname}`);
           }}
         >
           <div
@@ -36,7 +36,7 @@ export default function FavoriteModal({
               <button
                 className="text-gray-400 hover:text-black cursor-pointer"
                 onClick={() => {
-                  navigate("/");
+                  navigate(`${location.state?.backgroundLocation.pathname}`);
                 }}
               >
                 ✕
