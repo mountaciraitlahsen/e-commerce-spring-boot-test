@@ -8,7 +8,6 @@ export default function FavoriteModal({
 }) {
   const location = useLocation();
   const isModal = Boolean(location.state?.backgroundLocation);
-  const closeModal = () => navigate(-1);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isModal) {

@@ -1,8 +1,7 @@
 import { useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function ProductsCard({
   search,
-  setProducts,
   Category,
   Products,
   FavoriteIds,

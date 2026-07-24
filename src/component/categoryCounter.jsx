@@ -1,6 +1,4 @@
-import { useEffect, useState, useMemo} from "react";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { useMemo} from "react";
 export default function CategoryCounter({Category, Products, search}) {
   const productCount = useMemo(() => {
   if (Category === 'All Categories') {

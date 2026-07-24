@@ -1,16 +1,12 @@
-import CategoryCounter from "./categoryCounter";
-import CategorySorting from "./categorySorting";
 import ProductsCard from "./productsCard";
 import ThirdHeader from "./thirdHeader";
 import SideBar from "./sideBar";
-import { useMemo } from "react";
 export default function ListProducts({
   setCategory,
   setSorting,
   Category,
   Products,
   search,
-  setProducts,
   FavoriteIds,
   setFavId,
   CartIds,
@@ -29,7 +25,6 @@ export default function ListProducts({
         ></ThirdHeader>
         <ProductsCard
           search={search}
-          setProducts={setProducts}
           Category={Category}
           Products={Products}
           FavoriteIds={FavoriteIds}

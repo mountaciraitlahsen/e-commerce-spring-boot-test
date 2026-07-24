@@ -1,6 +1,5 @@
 import { useEffect, useMemo } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-
 export default function ProductDetails({
   Products,
   FavoriteIds,
@@ -182,7 +181,7 @@ export default function ProductDetails({
                 <button
                   type="button"
                   onClick={() => decreaseQuantity(ProductCard.id)}
-                  className="w-14 text-2xl font-semibold text-[#1C5CF8] hover:bg-blue-50 transition-colors"
+                  className="w-14 text-2xl font-semibold text-[#1C5CF8] hover:bg-blue-50 transition-colors cursor-pointer"
                 >
                   −
                 </button>
@@ -193,7 +192,7 @@ export default function ProductDetails({
                   type="button"
                   onClick={() => increaseQuantity(ProductCard.id)}
                   disabled={isMaxedOut}
-                  className="w-14 text-2xl font-semibold text-[#1C5CF8] hover:bg-blue-50 transition-colors disabled:text-gray-300 disabled:hover:bg-transparent"
+                  className="w-14 text-2xl font-semibold text-[#1C5CF8] hover:bg-blue-50 transition-colors disabled:text-gray-300 disabled:hover:bg-transparent cursor-pointer"
                 >
                   +
                 </button>

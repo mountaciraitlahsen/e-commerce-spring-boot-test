@@ -1,21 +1,19 @@
 import "./styles.css";
 import { createRoot } from "react-dom/client";
-import { StrictMode, useState, useEffect } from "react";
+import { useState } from "react";
 import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
   useLocation,
 } from "react-router-dom";
 import Header from "./component/header";
-import SideBar from "./component/sideBar";
 import ListProducts from "./component/listProducts";
 import FavoriteModal from "./component/favoriteModal";
 import CartModal from "./component/cartModal";
 import ProductDetails from "./component/productDetails";
 import { products } from "./products";
-function App() {
+export default function App() {
   const [search, setSearch] = useState("");
   const [Category, setCategory] = useState("All Categories");
   const [Products, setProducts] = useState(products);
