@@ -65,7 +65,8 @@ export default function ProductsCard({
         id="body"
       >
         {products.map((p) => (
-          <Link to={`/products/${p.id}`}
+          <Link
+            to={`/products/${p.id}`}
             key={p.id}
             className="relative w-64 h-95 border border-[#e3e3e3] bg-white rounded-xl p-4 flex flex-col gap-2"
           >
@@ -76,6 +77,11 @@ export default function ProductsCard({
             />
             <button
               className="absolute top-4 right-4 cursor-pointer"
+              aria-label={
+                FavoriteIds.includes(p.id)
+                  ? `Remove from favorites ${p.name}`
+                  : `Add to favorites ${p.name}`
+              }
               onClick={(e) => {
                 e.preventDefault();
                 handleClickFav(p.id);

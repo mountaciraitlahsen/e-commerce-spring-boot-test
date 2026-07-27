@@ -15,7 +15,7 @@ export default function Favorite({ counterFavorite }) {
           alt=""
           className="inline-block w-5 h-5 align-middle mr-1"
         />
-        <span className="pl-1">
+        <span aria-label="Favorites Counter" className="pl-1">
           Favorites (<span>{counterFavorite}</span>)
         </span>
       </Link>
