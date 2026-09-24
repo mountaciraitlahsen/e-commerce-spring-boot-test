@@ -27,7 +27,7 @@ export default function FavoriteModal({
           }}
         >
           <div
-            className="bg-[#FEFEFE] w-[33.5rem] h-[43rem] mt-4 mr-6 rounded-2xl shadow-xl p-6 "
+            className="bg-[#FEFEFE] w-134rem] mt-4 mr-6 rounded-2xl shadow-xl p-6 "
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-6">
@@ -56,7 +56,7 @@ export default function FavoriteModal({
               {Products.map((p) => {
                 if (FavoriteIds.includes(p.id)) {
                   return (
-                    <div className="flex items-center gap-8 h-[5.5rem] border-t-2 border-[#F5F6F7] mt-4 pt-3">
+                    <div className="flex items-center gap-8 h-22 border-t-2 border-[#F5F6F7] mt-4 pt-3">
                       <img
                         src={p.pic}
                         alt="Product"

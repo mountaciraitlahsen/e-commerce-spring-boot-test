@@ -1,7 +1,7 @@
-import ProductsCard from "./productsCard";
-import ThirdHeader from "./thirdHeader";
-import SideBar from "./sideBar";
-export default function ListProducts({
+import ProductsCard from "../component/productsCard";
+import ThirdHeader from "../component/thirdHeader";
+import SideBar from "../component/sideBar";
+export default function ListProductsPage({
   setCategory,
   setSorting,
   Category,

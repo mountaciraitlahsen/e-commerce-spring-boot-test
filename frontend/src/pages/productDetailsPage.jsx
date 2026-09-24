@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-export default function ProductDetails({
+export default function ProductDetailsPage({
   Products,
   FavoriteIds,
   setFavId,
@@ -70,7 +70,7 @@ export default function ProductDetails({
   return (
     <div className="col-span-4 w-full max-w-6xl mx-auto px-6 py-10">
       <Link
-        to="/"
+        to={location.state?.backgroundLocation?.pathname || "/"}
         className="inline-flex items-center gap-2 text-[#1C5CF8] font-medium mb-8 hover:underline transition-all"
       >
         <svg
