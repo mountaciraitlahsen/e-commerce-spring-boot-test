@@ -1,13 +1,7 @@
 package com.mountacir;
 
-import com.mountacir.customer.Customer;
-import com.mountacir.customer.CustomerRepository;
-import com.mountacir.customer.PostCustomer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @SpringBootApplication
 public class Main {

@@ -15,3 +15,14 @@ spring:
     show-sql: true
   main:
     web-application-type: servlet
+
+  spring:
+    jpa:
+      hibernate:
+        format_sql: true
+    main:
+      web-application-type: servlet
+
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: ${JWT_EXPIRATION_MS}

@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_USER: mountacir
       POSTGRES_PASSWORD: password
-#      POSTGRES_DB: customer
+      POSTGRES_DB: test
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
