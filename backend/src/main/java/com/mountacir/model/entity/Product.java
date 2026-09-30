@@ -32,6 +32,62 @@ public class Product {
     public Product() {
     }
 
+    private Product(Builder builder) {
+        this.name = builder.name;
+        this.description = builder.description;
+        this.category = builder.category;
+        this.price = builder.price;
+        this.stock = builder.stock;
+        this.productImageUrl = builder.productImageUrl;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String name;
+        private String description;
+        private String category;
+        private BigDecimal price;
+        private Integer stock;
+        private String productImageUrl;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder category(String category) {
+            this.category = category;
+            return this;
+        }
+
+        public Builder price(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder stock(Integer stock) {
+            this.stock = stock;
+            return this;
+        }
+
+        public Builder productImageUrl(String productImageUrl) {
+            this.productImageUrl = productImageUrl;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }

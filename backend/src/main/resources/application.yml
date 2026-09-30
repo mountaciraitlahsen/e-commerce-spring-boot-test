@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     url: jdbc:postgresql://localhost:5332/customer
     username: mountacir
@@ -16,13 +18,14 @@ spring:
   main:
     web-application-type: servlet
 
-  spring:
-    jpa:
-      hibernate:
-        format_sql: true
-    main:
-      web-application-type: servlet
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-ms: ${JWT.EXPIRATION-MS}
 
-  jwt:
-    secret: ${JWT_SECRET}
-    expiration-ms: ${JWT_EXPIRATION_MS}
+aws:
+  s3:
+    endpoint: http://localhost:9000
+    bucket-name: images
+    access-key: ${AWS_S3_ACCESS_KEY}
+    secret-key: ${AWS_S3_SECRET_KEY}
+    region: us-east-1

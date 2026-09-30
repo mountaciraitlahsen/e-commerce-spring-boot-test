@@ -2,8 +2,8 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: mountacir
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: test
       PGDATA: /data/postgres
     volumes:
@@ -13,9 +13,22 @@ services:
     networks:
       - db
     restart: unless-stopped
+  minio:
+    image: bitnamilegacy/minio:latest
+    container_name: local_minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${AWS_S3_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${AWS_S3_SECRET_KEY}
+    volumes:
+      - minio:/bitnami/minio/data
+    command: server /bitnami/minio/data --console-address ":9001"
 
 networks:
   db:
     driver: bridge
 volumes:
   db:
+  minio:
