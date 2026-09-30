@@ -1,5 +1,8 @@
 import { useState } from "react";
+import {useAuth} from "../hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, loading, error } = useAuth();
@@ -9,7 +12,9 @@ export default function LoginForm() {
     try {
       await login(email, password);
       navigate("/products");
-    } catch {}
+    } catch {
+      throw error;
+    }
   };
   return (
     <>
