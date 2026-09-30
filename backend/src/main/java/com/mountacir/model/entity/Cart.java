@@ -17,6 +17,27 @@ public class Cart {
     public Cart() {
     }
 
+    private Cart(Builder builder) {
+        this.user = builder.user;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private User user;
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Cart build() {
+            return new Cart(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }

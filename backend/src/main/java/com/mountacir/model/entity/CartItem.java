@@ -23,4 +23,39 @@ public class CartItem {
 
     public CartItem() {
     }
+
+    private CartItem(Builder builder) {
+        this.cart = builder.cart;
+        this.product = builder.product;
+        this.quantity = builder.quantity;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private Cart cart;
+        private Product product;
+        private Integer quantity;
+
+        public Builder cart(Cart cart) {
+            this.cart = cart;
+            return this;
+        }
+
+        public Builder product(Product product) {
+            this.product = product;
+            return this;
+        }
+
+        public Builder quantity(Integer quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public CartItem build() {
+            return new CartItem(this);
+        }
+    }
 }
