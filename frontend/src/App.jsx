@@ -1,7 +1,13 @@
 import "./styles.css";
 import { createRoot } from "react-dom/client";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import Header from "./component/header";
 import ListProductsPage from "./pages/listProductsPage";
 import FavoriteModal from "./component/favoriteModal";
@@ -9,6 +15,7 @@ import CartModal from "./component/cartModal";
 import ProductDetailsPage from "./pages/productDetailsPage";
 import { products } from "./products";
 import LoginPage from "./pages/loginPage";
+import ForgotPasswordPage from "./pages/forgotPasswordPage";
 export default function App() {
   const [search, setSearch] = useState("");
   const [Category, setCategory] = useState("All Categories");
@@ -23,8 +30,14 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/" element={<Navigate to="/api/auth/login" replace />} />
+        <Route path="/api/auth">
+          <Route path="login" element={<LoginPage />}></Route>
+          <Route
+            path="forgot-password"
+            element={<ForgotPasswordPage />}
+          ></Route>
+        </Route>
         <Route
           path="/products"
           element={
@@ -32,7 +45,7 @@ export default function App() {
               <header
                 className="flex justify-around items-center gap-x-15 text-[20px] h-19 bg-[#FEFEFE] border-b shadow-[0_2px_4px_0px_rgba(0,0,0,0.05)] border-b-[#f4eded]"
                 id="header"
-              >
+              > 
                 <Header
                   search={search}
                   setSearch={setSearch}
@@ -105,7 +118,7 @@ export default function App() {
             </>
           }
         ></Route>
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/api/auth/login" replace />} />
       </Routes>
     </>
   );

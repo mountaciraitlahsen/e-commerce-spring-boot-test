@@ -22,8 +22,8 @@ export default function LoginCard() {
         <LoginForm></LoginForm>
         <div className="w-full flex flex-col items-center gap-2 mt-2 px-7 pb-2">
           <Link
-            to="/forgot-password"
-            className="text-xs text-blue-600 hover:underline font-semibold"
+            to="/api/auth/forgot-password"
+            className="text-[.8rem] text-blue-600 hover:underline font-semibold"
           >
             Forgot your password?
           </Link>
