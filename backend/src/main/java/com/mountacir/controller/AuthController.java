@@ -2,6 +2,7 @@ package com.mountacir.controller;
 
 import com.mountacir.model.dto.AuthResponse;
 import com.mountacir.model.dto.LoginRequest;
+import com.mountacir.model.dto.ResetPasswordRequest;
 import com.mountacir.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,5 +20,15 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody String email) {
+        return ResponseEntity.ok(authService.createPasswordResetToken(email));
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) {
+        return ResponseEntity.ok(authService.validateAndResetPassword(resetPasswordRequest));
     }
 }
