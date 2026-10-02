@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { resetPassword as passwordResetRequest } from '../services/passwordResetService';
+import { useState } from "react";
+import { resetPassword as passwordResetRequest } from "../services/passwordResetService";
 
 export const usePasswordReset = () => {
   const [loading, setLoading] = useState(false);
@@ -12,12 +12,16 @@ export const usePasswordReset = () => {
       const data = await passwordResetRequest(token, newPassword);
       return data;
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid email or password');
+      setError(
+        err.response?.data?.error ||
+          err.response?.data?.message ||
+          "Password reset failed",
+      );
       throw err;
     } finally {
       setLoading(false);
     }
   };
 
-  return { passwordReset, loading, error, setError};
+  return { passwordReset, loading, error, setError };
 };
