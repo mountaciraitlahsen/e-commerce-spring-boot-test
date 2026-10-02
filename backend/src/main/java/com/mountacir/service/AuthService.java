@@ -70,7 +70,7 @@ public class AuthService {
 
     public ResponseEntity<?> validateAndResetPassword(ResetPasswordRequest resetPasswordRequest) {
 
-        Optional<User> userOptional = userRepository.findByToken(resetPasswordRequest.Token());
+        Optional<User> userOptional = userRepository.findByResetToken(resetPasswordRequest.Token());
 
         if (userOptional.isEmpty()) {
             return ResponseEntity.status(400).body(Map.of("error", "Invalid or expired token."));
