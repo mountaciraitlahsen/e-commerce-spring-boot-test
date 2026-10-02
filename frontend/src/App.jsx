@@ -16,6 +16,7 @@ import ProductDetailsPage from "./pages/productDetailsPage";
 import { products } from "./products";
 import LoginPage from "./pages/loginPage";
 import ForgotPasswordPage from "./pages/forgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 export default function App() {
   const [search, setSearch] = useState("");
   const [Category, setCategory] = useState("All Categories");
@@ -37,6 +38,7 @@ export default function App() {
             path="forgot-password"
             element={<ForgotPasswordPage />}
           ></Route>
+          <Route path="reset-password" element={<ResetPasswordPage />}></Route>
         </Route>
         <Route
           path="/products"

@@ -1,19 +1,22 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useForgotPassword } from "../hooks/useForgotPassword";
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { passwordReset, loading, error } = useForgotPassword();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
-
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 800);
+    if(!email) return ;
+    try {
+      await passwordReset(email);
+    } catch {
+      throw error;
+    }
+    finally {
+        setSubmitted(true);
+    }
   };
   const handleReset = () => {
     setSubmitted(false);
@@ -42,16 +45,12 @@ export default function ForgotPasswordForm() {
               Resend email
             </button>
             <div>
-              <a
-                href="#login"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Navigating back to log in");
-                }}
+              <Link
+                to = "/api/auth/login"
                 className="inline-block text-sm font-medium text-[#0146FD] hover:text-blue-700 hover:underline transition-colors mt-2"
               >
                 Back to Log In
-              </a>
+              </Link>
             </div>
           </div>
         </div>
