@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function ResetPasswordForm() {
-
+import { usePasswordReset } from "../hooks/usePasswordReset";
+export default function ResetPasswordForm({ token }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const { passwordReset, loading, error, setError } = usePasswordReset();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -22,25 +21,19 @@ export default function ResetPasswordForm() {
       return;
     }
 
-    setLoading(true);
-    // Simulate network request
-    setTimeout(() => {
-      setLoading(false);
+    if (!token) {
+      setError("The reset link is invalid or missing.");
+      return;
+    }
+
+    try {
+      const data = await passwordReset(token, confirmPassword);
+      console.log(data);
       setSuccess(true);
-    }, 800);
+    } catch (err) {
+      console.error(err.response?.data || err);
+    }
   };
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     if(!email) return ;
-  //     try {
-  //       await passwordReset(email);
-  //     } catch {
-  //       throw error;
-  //     }
-  //     finally {
-  //         setSubmitted(true);
-  //     }
-  //   };
   return (
     <>
       {success ? (

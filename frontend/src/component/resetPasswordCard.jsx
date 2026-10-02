@@ -1,6 +1,6 @@
 import ResetPasswordForm from "./resetPasswordForm";
 
-export default function ForgotPasswordCard() {
+export default function ForgotPasswordCard({token}) {
   return (
     <>
       <div className="min-h-screen bg-[#F8F9FA] flex flex-col items-center justify-center p-4 selection:bg-blue-100 selection:text-blue-700">
@@ -12,7 +12,7 @@ export default function ForgotPasswordCard() {
               <span className="text-[#0146FD]">Easy</span>
             </div>
           </div>
-          <ResetPasswordForm />
+          <ResetPasswordForm token = {token} />
         </div>
       </div>
     </>

@@ -1,17 +1,15 @@
 import { useState } from 'react';
-import { reset as passwordResetRequest } from '../services/passwordResetService';
+import { resetPassword as passwordResetRequest } from '../services/passwordResetService';
 
-export const usePassword = () => {
+export const usePasswordReset = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const passwordReset = async (email) => {
+  const passwordReset = async (token, newPassword) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await passwordResetRequest(email);
-      localStorage.setItem('token', data.token);
-      console.log(data);
+      const data = await passwordResetRequest(token, newPassword);
       return data;
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
@@ -21,5 +19,5 @@ export const usePassword = () => {
     }
   };
 
-  return { passwordReset, loading, error };
+  return { passwordReset, loading, error, setError};
 };

@@ -4,18 +4,16 @@ import { useForgotPassword } from "../hooks/useForgotPassword";
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const { passwordReset, loading, error } = useForgotPassword();
+  const { forgotPassword, loading, error } = useForgotPassword();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!email) return ;
     try {
-      await passwordReset(email);
+      await forgotPassword(email);
+      setSubmitted(true);
     } catch {
       throw error;
-    }
-    finally {
-        setSubmitted(true);
     }
   };
   const handleReset = () => {

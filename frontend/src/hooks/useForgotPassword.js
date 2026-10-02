@@ -10,8 +10,6 @@ export const useForgotPassword = () => {
     setError(null);
     try {
       const data = await forgotPasswordRequest(email);
-      localStorage.setItem('token', data.token);
-      console.log(data);
       return data;
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
