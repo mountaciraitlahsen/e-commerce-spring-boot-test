@@ -63,7 +63,7 @@ public class AuthService {
             user.setResetTokenExpires(LocalDateTime.now().plusMinutes(15));
             userRepository.save(user);
 
-            String resetLink = "https://http://localhost:5173/api/auth/reset-password" + token;
+            String resetLink = "https://http://localhost:5173/api/auth/reset-password?token=" + token;
 
             emailService.sendEmail(user.getEmail(), "Password Reset Request", "Click this link to reset your password: " + resetLink + "\nThis link expires in 15 minutes.");
         }
