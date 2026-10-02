@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.Console;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class AuthService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
-        this.emailService = emailService;
+        this.emailService = emailservice;
     }
 
     public AuthResponse login(LoginRequest request) {
@@ -51,7 +52,9 @@ public class AuthService {
 
         String successMessage = "If that email exists, a reset link has been sent.";
 
+        System.out.println("ho");
         if (userOptional.isPresent()) {
+            System.out.println("hi");
             User user = userOptional.get();
 
             String token = UUID.randomUUID().toString();
@@ -60,7 +63,7 @@ public class AuthService {
             user.setResetTokenExpires(LocalDateTime.now().plusMinutes(15));
             userRepository.save(user);
 
-                String resetLink = "https://http://localhost:5173/api/auth/reset-password" + token;
+            String resetLink = "https://http://localhost:5173/api/auth/reset-password" + token;
 
             emailService.sendEmail(user.getEmail(), "Password Reset Request", "Click this link to reset your password: " + resetLink + "\nThis link expires in 15 minutes.");
         }

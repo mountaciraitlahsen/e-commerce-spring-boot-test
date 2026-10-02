@@ -1,6 +1,7 @@
 package com.mountacir.controller;
 
 import com.mountacir.model.dto.AuthResponse;
+import com.mountacir.model.dto.ForgotPasswordRequest;
 import com.mountacir.model.dto.LoginRequest;
 import com.mountacir.model.dto.ResetPasswordRequest;
 import com.mountacir.service.AuthService;
@@ -23,8 +24,8 @@ public class AuthController {
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<?> forgotPassword(@RequestBody String email) {
-        return ResponseEntity.ok(authService.createPasswordResetToken(email));
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordRequest request) {
+        return ResponseEntity.ok(authService.createPasswordResetToken(request.email()));
     }
 
     @PostMapping("/reset-password")
