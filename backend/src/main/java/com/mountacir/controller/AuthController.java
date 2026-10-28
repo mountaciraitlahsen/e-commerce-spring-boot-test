@@ -1,10 +1,8 @@
 package com.mountacir.controller;
 
-import com.mountacir.model.dto.AuthResponse;
-import com.mountacir.model.dto.ForgotPasswordRequest;
-import com.mountacir.model.dto.LoginRequest;
-import com.mountacir.model.dto.ResetPasswordRequest;
+import com.mountacir.model.dto.*;
 import com.mountacir.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +14,16 @@ public class AuthController {
 
     public AuthController(AuthService authService) {
         this.authService = authService;
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registration(@Valid @RequestBody RegistrationRequest request) {
+        return authService.registration(request);
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verification(@RequestBody VerifyRequest request) {
+        return authService.otpVerification(request);
     }
 
     @PostMapping("/login")

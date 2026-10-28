@@ -17,6 +17,7 @@ import { products } from "./products";
 import LoginPage from "./pages/loginPage";
 import ForgotPasswordPage from "./pages/forgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import RegisterPage from "./pages/registerPage";
 export default function App() {
   const [search, setSearch] = useState("");
   const [Category, setCategory] = useState("All Categories");
@@ -39,6 +40,7 @@ export default function App() {
             element={<ForgotPasswordPage />}
           ></Route>
           <Route path="reset-password" element={<ResetPasswordPage />}></Route>
+          <Route path="register" element={<RegisterPage />}></Route>
         </Route>
         <Route
           path="/products"

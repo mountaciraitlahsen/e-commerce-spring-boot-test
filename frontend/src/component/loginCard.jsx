@@ -35,7 +35,7 @@ export default function LoginCard() {
           </div>
 
           <Link
-            to="/register"
+            to="/api/auth/register"
             className="w-full py-2.5 text-center text-sm font-medium text-[#0146FD] bg-white border border-[#0146FD] rounded-lg hover:bg-[#0146FD] hover:text-white transition-colors block"
           >
             Create an account

@@ -27,66 +27,54 @@ public class User {
     @Column(name = "reset_token", nullable = true)
     private String resetToken;
 
+    public void setOtp(String otp) {
+        this.otp = otp;
+    }
+
+    public void setOtpExpires(LocalDateTime otpExpires) {
+        this.otpExpires = otpExpires;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public LocalDateTime getOtpExpires() {
+        return otpExpires;
+    }
+
     @Column(name = "reset_token_expires", nullable = true)
     private LocalDateTime resetTokenExpires;
 
+    @Column(name = "otp", nullable = true)
+    private String otp;
+
+    @Column(name = "otp_expires", nullable = true)
+    private LocalDateTime otpExpires;
+
+    @Column(name = "is_verified", nullable = true)
+    private Boolean isVerified;
+
+    public void setVerified(Boolean verified) {
+        isVerified = verified;
+    }
+
+    public void setVerificationTokenExpires(LocalDateTime verificationTokenExpires) {
+        this.verificationTokenExpires = verificationTokenExpires;
+    }
+
+    public Boolean getVerified() {
+        return isVerified;
+    }
+
+    public LocalDateTime getVerificationTokenExpires() {
+        return verificationTokenExpires;
+    }
+
+    @Column(name = "verification_token_expires", nullable = true)
+    private LocalDateTime verificationTokenExpires;
+
     public User() {
-    }
-
-    private User(Builder builder) {
-        this.name = builder.name;
-        this.email = builder.email;
-        this.passwordHash = builder.passwordHash;
-        this.cart = builder.cart;
-        this.resetToken = builder.resetToken;
-        this.resetTokenExpires = builder.resetTokenExpires;
-    }
-
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private String name;
-        private String email;
-        private String passwordHash;
-        private Cart cart;
-        private String resetToken;
-        private LocalDateTime resetTokenExpires;
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public Builder passwordHash(String passwordHash) {
-            this.passwordHash = passwordHash;
-            return this;
-        }
-
-        public Builder cart(Cart cart) {
-            this.cart = cart;
-            return this;
-        }
-
-        public Builder resetToken(String resetToken) {
-            this.resetToken = resetToken;
-            return this;
-        }
-
-        public Builder resetTokenExpires(LocalDateTime resetTokenExpires) {
-            this.resetTokenExpires = resetTokenExpires;
-            return this;
-        }
-
-        public User build() {
-            return new User(this);
-        }
     }
 
     public Long getId() {
